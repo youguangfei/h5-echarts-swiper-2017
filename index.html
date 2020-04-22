@@ -41,7 +41,7 @@
 				loop: true,
 				speed: 600,
 				autoplay: {
-					delay: 3000,//1秒切换一次
+					delay: 100000,//1秒切换一次
 				},  //间隔时间
 
 				pagination: '.pagination',
@@ -86,12 +86,18 @@
 					},
 					xAxis: {
 						type: 'category',
+					    color: "#f00",
 						boundaryGap: false,
 						data:  options.xAxisData,
 						axisLine:{
 							lineStyle:{
 								color:'#979797',
 							}
+						},
+						axisLabel: {
+							textStyle:{
+								color:'#F3F3F3',  //坐标的字体颜色
+							},
 						},
 						splitLine: {
 							show: true,
@@ -108,6 +114,11 @@
 							lineStyle:{
 								color:'#979797',
 							}
+						},
+						axisLabel: {
+							textStyle:{
+								color:'#F3F3F3',  //坐标的字体颜色
+							},
 						},
 						splitLine: {
 							show: true,
