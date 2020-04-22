@@ -68,6 +68,7 @@
 
 			function getOption(options) {
 				var option = {
+					backgroundColor:'rgba(33,32,32,1)',
 					title: {
 						text: options.title
 					},
@@ -86,10 +87,36 @@
 					xAxis: {
 						type: 'category',
 						boundaryGap: false,
-						data:  options.xAxisData
+						data:  options.xAxisData,
+						axisLine:{
+							lineStyle:{
+								color:'#979797',
+							}
+						},
+						splitLine: {
+							show: true,
+							lineStyle:{
+								color: ['#383838'],
+								width: 1,
+								type: 'solid'
+							}
+						}
 					},
 					yAxis: {
-						type: 'value'
+						type: 'value',
+						axisLine:{
+							lineStyle:{
+								color:'#979797',
+							}
+						},
+						splitLine: {
+							show: true,
+							lineStyle:{
+								color: ['#383838'],
+								width: 1,
+								type: 'solid'
+							}
+						}
 					},
 					series: [{
 						name: '注册用户增长',
