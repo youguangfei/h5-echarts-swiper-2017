@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Swiper demo</title>
+		<!-- Link Swiper's CSS -->
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<link rel="stylesheet" href="css/page.css">
+		
+	</head>
+	<body>
+		<!-- Swiper -->
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				
+				<div class="swiper-slide swiper-slide1" id="swiper-slide1">
+
+				</div>
+				<div class="swiper-slide swiper-slide2" id="swiper-slide2">
+					Slide 2
+				</div>
+				<div class="swiper-slide swiper-slide3" id="swiper-slide3">Slide 3</div>
+				<div class="swiper-slide swiper-slide4" id="swiper-slide4">Slide 4</div>
+				
+			</div>
+		</div>
+
+		<script src="js/jquery.js"></script>
+		<script src="js/swiper.min.js"></script>
+		<script src="js/echarts.common.min.js"></script>
+   
+
+		<script>
+			var initEchartObj ={
+				init1:null,
+				init2:null,
+				init3:null,
+				init4:null
+			}
+			var mySwiper = new Swiper('.swiper-container', {
+				loop: true,
+				speed: 600,
+				autoplay: {
+					delay: 3000,//1秒切换一次
+				},  //间隔时间
+
+				pagination: '.pagination',
+				on: {
+				    slideChangeTransitionStart: function(){
+				      console.log("----"+this.activeIndex);
+					  // 取余数 0,1,2,3
+					  var index = this.activeIndex%4;
+					  if(index == 0){
+						  index = 4;
+					  }
+					  console.log(index)
+					  var initEchart = initEchartObj["init"+index];
+					  console.log(initEchart)
+					  if(initEchart){
+						  initEchart();
+					  }
+					  
+					},
+				},
+			})
+
+
+
+			function getOption(options) {
+				var option = {
+					title: {
+						text: options.title
+					},
+					tooltip: {
+						trigger: 'axis'
+					},
+					legend: {
+						data: [ options.title]
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '3%',
+						containLabel: true
+					},
+					xAxis: {
+						type: 'category',
+						boundaryGap: false,
+						data:  options.xAxisData
+					},
+					yAxis: {
+						type: 'value'
+					},
+					series: [{
+						name: '注册用户增长',
+						type: 'line',
+						// stack: '总量',
+						data: options.seriesData
+					}, ]
+				};
+				return option;
+			}
+
+
+			//获取dom容器
+			
+			var option1 = {
+				title: "注册用户增长",
+				xAxisData:["2019.08","2019.09","2019.10","2019.11","2019.12","2020.01","2020.02","2020.03"],
+				seriesData: [7414,8047,6660,7785,9315,12720,12643,19519]
+			}
+			option1 = getOption(option1);
+			console.log(option1);
+			
+			initEchartObj.init1=function(){
+				var box = document.getElementsByClassName('swiper-slide1');
+				for(var i=0;i<box.length;i++){
+					(function(i){
+						console.log("----"+i);
+						var myChart = echarts.init(box[i]);
+						myChart.setOption(option1);
+					})(i)
+				}
+			}
+			initEchartObj.init1();
+			
+
+			var option2 = {
+				title: "商城总访客数",
+				xAxisData:["2019.08","2019.09","2019.10","2019.11","2019.12","2020.01","2020.02","2020.03"],
+				seriesData: [17799,73543,74825,199773,22723,176099,279060,546962]
+			}
+			option2 = getOption(option2);
+			initEchartObj.init2= function(){
+				var box = document.getElementsByClassName('swiper-slide2');
+				for(var i=0;i<box.length;i++){
+					var myChart = echarts.init(box[i]);
+					myChart.setOption(option2);
+				}
+			}
+			initEchartObj.init2();
+
+		
+			var option3 = {
+				title: "商城总订单数",
+				xAxisData:["2019.08","2019.09","2019.10","2019.11","2019.12","2020.01","2020.02","2020.03"],
+				seriesData: [603,5516,13443,25287,34264,39398,57647,70440]
+			}
+			option3 = getOption(option3);
+			initEchartObj.init3= function(){
+				var box = document.getElementsByClassName('swiper-slide3');
+				for(var i=0;i<box.length;i++){
+					var myChart = echarts.init(box[i]);
+					myChart.setOption(option3);
+				}
+			}
+			initEchartObj.init3();
+			
+
+		
+			var option4 = {
+				title: "商城总销售金额",
+				xAxisData:["2019.08","2019.09","2019.10","2019.11","2019.12","2020.01","2020.02","2020.03"],
+				seriesData: [38092,314048,1233798,2702978,2412590,2180298,9733346,6278161]
+			}
+			option4 = getOption(option4);
+			initEchartObj.init4= function(){
+				var box = document.getElementsByClassName('swiper-slide4');
+				for(var i=0;i<box.length;i++){
+					var myChart = echarts.init(box[i]);
+					myChart.setOption(option4);
+				}
+			}
+			initEchartObj.init4();
+			
+			
+			
+			
+		</script>
+	</body>
+</html>
