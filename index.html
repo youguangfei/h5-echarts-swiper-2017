@@ -69,15 +69,19 @@
 			function getOption(options) {
 				var option = {
 					backgroundColor:'rgba(33,32,32,1)',
-					title: {
-						text: options.title
+					title: {						
+						text: options.title,
+						textStyle: {
+							fontWeight: 600, 
+							color: '#F3F3F3'
+						},
+						x:"50px",   
+						y: "10px"
 					},
 					tooltip: {
 						trigger: 'axis'
 					},
-					legend: {
-						data: [ options.title]
-					},
+				
 					grid: {
 						left: '3%',
 						right: '4%',
@@ -132,9 +136,13 @@
 					series: [{
 						name: '注册用户增长',
 						type: 'line',
-						// stack: '总量',
-						data: options.seriesData
-					}, ]
+						data: options.seriesData,
+						lineStyle:{
+							normal: {
+								color: "#FFA915"
+							}
+						}
+					}]
 				};
 				return option;
 			}
