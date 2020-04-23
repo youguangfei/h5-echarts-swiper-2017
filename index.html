@@ -47,7 +47,7 @@
 				loop: true,
 				speed: 600,
 				autoplay: {
-					delay: 300000,//1秒切换一次
+					delay: 3000,//1秒切换一次
 				},  //间隔时间
 
 				pagination: '.pagination',
@@ -59,6 +59,15 @@
 					  if(index == 0){
 						  index = 4;
 					  }
+
+                      var titleJson ={
+						  1:"注册用户增长",
+						  2:"商城总访客数",
+						  3:"商城总订单数",
+						  4:"商城总销售金额",
+					  }
+					  $("#swiperTitle").html(titleJson[index]);
+
 					  console.log(index)
 					  var initEchart = initEchartObj["init"+index];
 					  console.log(initEchart)
@@ -88,11 +97,11 @@
 					tooltip: {
 						trigger: 'axis'
 					},
-				
 					grid: {
-						left: '3%',
-						right: '4%',
-						bottom: '3%',
+						left: '5.6%',
+						right: '5.6%',
+						top: '10%',
+						bottom: '6%',
 						containLabel: true
 					},
 					xAxis: {
@@ -107,6 +116,7 @@
 						},
 						axisLabel: {
 							textStyle:{
+								fontSize: 28,
 								color:'#F3F3F3',  //坐标的字体颜色
 							},
 						},
@@ -128,6 +138,7 @@
 						},
 						axisLabel: {
 							textStyle:{
+								fontSize: 28,
 								color:'#F3F3F3',  //坐标的字体颜色
 							},
 						},
@@ -203,11 +214,19 @@
 					legend: {
 						
 					},
+					grid: {
+						left: '5.6%',
+						right: '5.6%',
+						top: '10%',
+						bottom: '6%',
+						containLabel: true
+					},
 					// x轴
 					xAxis: {
 						data: options.xAxisData,
 						axisLabel: {
 							textStyle:{
+								fontSize: 28,
 								color:'#F3F3F3',  //坐标的字体颜色
 							},
 						},
@@ -223,6 +242,7 @@
 					yAxis: {
 						axisLabel: {
 							textStyle:{
+								fontSize: 28,
 								color:'#F3F3F3',  //坐标的字体颜色
 							},
 						},
@@ -241,26 +261,33 @@
 							type: 'bar',
 							data: options.seriesData,
 							itemStyle:{
-							normal:{
-								color:'red',//拐点颜色
-								// borderColor:'#000000',//拐点边框颜色
-								// borderWidth:3//拐点边框大小
-								label: {
-									show: true,
-									position: 'top',
-									formatter: "{c}",
-									textStyle: {
-										color: '#15D8FF',
-										fontSize: 24
-									}
+								normal:{
+									color: new echarts.graphic.LinearGradient(
+										0, 0, 0, 1,
+										[
+											{offset: 0, color: 'rgba(21, 216, 255, 1)'},                   //柱图渐变色
+											{offset: 1, color: 'rgba(0, 0, 0, 0)'},                 //柱图渐变色
+										]
+									),
+									// borderColor:'#000000',//拐点边框颜色
+									// borderWidth:3//拐点边框大小
+									label: {
+										show: true,
+										position: 'top',
+										formatter: "{c}",
+										textStyle: {
+											color: '#15D8FF',
+											fontSize: 24
+										}
+									},
+
+								},
+								emphasis: {
+									// color: '#000000'//hover拐点颜色定义
 								},
 
 							},
-							emphasis: {
-								// color: '#000000'//hover拐点颜色定义
-							},
-
-						},
+						
 					  }
 					]
 				};
@@ -274,7 +301,7 @@
 				xAxisData:["2019.08","2019.09","2019.10","2019.11","2019.12","2020.01","2020.02","2020.03"],
 				seriesData: [7414,8047,6660,7785,9315,12720,12643,19519]
 			}
-			option1 = getOption2(option1);
+			option1 = getOption1(option1);
 			console.log(option1);
 			
 			initEchartObj.init1=function(){
