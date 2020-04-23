@@ -41,7 +41,7 @@
 				loop: true,
 				speed: 600,
 				autoplay: {
-					delay: 100000,//1秒切换一次
+					delay: 300000,//1秒切换一次
 				},  //间隔时间
 
 				pagination: '.pagination',
@@ -139,9 +139,42 @@
 						data: options.seriesData,
 						lineStyle:{
 							normal: {
-								color: "#FFA915"
+								color: "#15D8FF"
 							}
-						}
+						},
+						symbol:'circle',//拐点样式
+                		symbolSize: 25,//拐点大小
+						itemStyle:{
+							normal:{
+								color:'red',//拐点颜色
+								// borderColor:'#000000',//拐点边框颜色
+								// borderWidth:3//拐点边框大小
+								label: {
+									show: true,
+									formatter: "{c}",
+									textStyle: {
+										color: '#15D8FF',
+										fontSize: 24
+									}
+								},
+
+							},
+							emphasis: {
+								// color: '#000000'//hover拐点颜色定义
+							},
+
+						},
+						areaStyle: {
+							normal: {
+							color:new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+								offset: 0,
+								color: 'rgba(21, 211, 249, 1)'
+							}, {
+								offset: 1,
+								color: 'rgba(0, 0, 0, 0.06)'
+							}]),//折线下面区块的颜色
+						}},
+
 					}]
 				};
 				return option;
