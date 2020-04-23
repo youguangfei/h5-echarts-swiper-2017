@@ -41,7 +41,7 @@
 				loop: true,
 				speed: 600,
 				autoplay: {
-					delay: 3000,//1秒切换一次
+					delay: 300000,//1秒切换一次
 				},  //间隔时间
 
 				pagination: '.pagination',
@@ -202,10 +202,31 @@
 					yAxis: {},
 					// 数据
 					series: [{
-						name: '销量',
-						type: 'bar',
-						data: options.seriesData,
-						}
+							name: '销量',
+							type: 'bar',
+							data: options.seriesData,
+							itemStyle:{
+							normal:{
+								color:'red',//拐点颜色
+								// borderColor:'#000000',//拐点边框颜色
+								// borderWidth:3//拐点边框大小
+								label: {
+									show: true,
+									position: 'top',
+									formatter: "{c}",
+									textStyle: {
+										color: '#15D8FF',
+										fontSize: 24
+									}
+								},
+
+							},
+							emphasis: {
+								// color: '#000000'//hover拐点颜色定义
+							},
+
+						},
+					  }
 					]
 				};
 				return option;
@@ -218,7 +239,7 @@
 				xAxisData:["2019.08","2019.09","2019.10","2019.11","2019.12","2020.01","2020.02","2020.03"],
 				seriesData: [7414,8047,6660,7785,9315,12720,12643,19519]
 			}
-			option1 = getOption1(option1);
+			option1 = getOption2(option1);
 			console.log(option1);
 			
 			initEchartObj.init1=function(){
