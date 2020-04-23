@@ -5,7 +5,7 @@
         color:#000;
         margin: 0;
         padding: 0;
-        background:rgba(15,15,15,1);
+        /* background:rgba(15,15,15,1); */
 }
     .swiper-container {
        width: 1200px;

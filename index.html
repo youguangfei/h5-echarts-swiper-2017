@@ -41,7 +41,7 @@
 				loop: true,
 				speed: 600,
 				autoplay: {
-					delay: 300000,//1秒切换一次
+					delay: 3000,//1秒切换一次
 				},  //间隔时间
 
 				pagination: '.pagination',
@@ -66,7 +66,7 @@
 
 
 
-			function getOption(options) {
+			function getOption1(options) {
 				var option = {
 					backgroundColor:'rgba(33,32,32,1)',
 					title: {						
@@ -181,14 +181,44 @@
 			}
 
 
+			function getOption2(options){
+				var option = {
+					// 标题
+					title: {
+						text: options.title,
+						left:'left',
+					},
+					tooltip:{
+						trigger:'axis'
+					},
+					// 图例
+					legend: {
+						
+					},
+					// x轴
+					xAxis: {
+						data: options.xAxisData
+					},
+					yAxis: {},
+					// 数据
+					series: [{
+						name: '销量',
+						type: 'bar',
+						data: options.seriesData,
+						}
+					]
+				};
+				return option;
+
+			}
+
 			//获取dom容器
-			
 			var option1 = {
 				title: "注册用户增长",
 				xAxisData:["2019.08","2019.09","2019.10","2019.11","2019.12","2020.01","2020.02","2020.03"],
 				seriesData: [7414,8047,6660,7785,9315,12720,12643,19519]
 			}
-			option1 = getOption(option1);
+			option1 = getOption1(option1);
 			console.log(option1);
 			
 			initEchartObj.init1=function(){
@@ -209,7 +239,7 @@
 				xAxisData:["2019.08","2019.09","2019.10","2019.11","2019.12","2020.01","2020.02","2020.03"],
 				seriesData: [17799,73543,74825,199773,22723,176099,279060,546962]
 			}
-			option2 = getOption(option2);
+			option2 = getOption2(option2);
 			initEchartObj.init2= function(){
 				var box = document.getElementsByClassName('swiper-slide2');
 				for(var i=0;i<box.length;i++){
@@ -225,7 +255,7 @@
 				xAxisData:["2019.08","2019.09","2019.10","2019.11","2019.12","2020.01","2020.02","2020.03"],
 				seriesData: [603,5516,13443,25287,34264,39398,57647,70440]
 			}
-			option3 = getOption(option3);
+			option3 = getOption1(option3);
 			initEchartObj.init3= function(){
 				var box = document.getElementsByClassName('swiper-slide3');
 				for(var i=0;i<box.length;i++){
@@ -242,7 +272,7 @@
 				xAxisData:["2019.08","2019.09","2019.10","2019.11","2019.12","2020.01","2020.02","2020.03"],
 				seriesData: [38092,314048,1233798,2702978,2412590,2180298,9733346,6278161]
 			}
-			option4 = getOption(option4);
+			option4 = getOption2(option4);
 			initEchartObj.init4= function(){
 				var box = document.getElementsByClassName('swiper-slide4');
 				for(var i=0;i<box.length;i++){
